@@ -5,6 +5,8 @@ return Math.floor((Date.UTC(dt2.getFullYear(), dt2.getMonth(), dt2.getDate()) - 
 }
 function str_date(d){
 	var date = d.getDate();
+	if(date<10)
+		date="0"+date;
 	var month = d.getMonth()+1;
 	if(month<10)
 		month = "0"+month;
@@ -14,6 +16,8 @@ function str_date(d){
 }
 function solution (D){		//assuming D to be a object type dictionary	
 	var input = Object.keys(D);
+	console.log("Input:")
+	console.log(D);
 	var res = new Object();
 	for(var i=0;i<input.length-1;i++){
 		var start = new Date(input[i]);
@@ -30,11 +34,18 @@ function solution (D){		//assuming D to be a object type dictionary
 		   loop = new Date(newDate);
 		}
 	}
+	console.log("Output:")
 	console.log(res);
 }
-var D = {
+//assuming input dictionaries to be in sorted form
+var D1 = {
+	"2019-01-01" : 100,
+	"2019-01-04" : 115
+}
+var D2 = {
 	"2019-01-10" : 10,
 	"2019-01-11" : 20,
 	"2019-01-13" : 10
 };
-solution(D);
+solution(D1);
+solution(D2);
